@@ -18,7 +18,8 @@ public class Level {
     
     private Texture stoneTexture = new Texture("textures/tiles/stone.png");
     private Texture dirtTexture = new Texture("textures/tiles/dirt.png");
-    
+    private Texture cloudTexture = new Texture("textures/tiles/cloud.png");
+
     private Tile[][] tiles;
     
     public Level(String name, Tile[][] levelTiles) {
@@ -38,6 +39,10 @@ public class Level {
                     }
                     case DIRT -> {
                         batch.draw(dirtTexture, x * Constants.TILE_SIZE, y * Constants.TILE_SIZE);
+
+                    }
+                    case CLOUD -> {
+                        batch.draw(cloudTexture, x * Constants.TILE_SIZE, y* Constants.TILE_SIZE);
                     }
                     default -> {}
                 }
