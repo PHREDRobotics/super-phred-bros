@@ -68,12 +68,12 @@ public class GameScreen implements Screen {
         
         player.setPosition(level.getPlayerSpawn());
         entities = level.getEntities();
+
+        level.render(game.batch);
     }
     
     @Override
     public void render(float delta) {
-        
-
         input();
         logic(delta);
         draw(delta);
