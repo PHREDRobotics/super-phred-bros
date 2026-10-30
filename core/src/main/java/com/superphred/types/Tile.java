@@ -6,6 +6,7 @@ public enum Tile {
     STONE(true),
     DIRT(true),
     CLOUD(true),
+    GRASS(true),
     PLAYER_SPAWN(false),
     GEAR_SPAWN(false),
     DOUGHNUT_SPAWN(false);

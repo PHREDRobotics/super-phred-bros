@@ -6,3 +6,4 @@ p -> player spawn
 g -> gear spawn
 d -> doughnut spawn
 c -> cloud
+G -> grass

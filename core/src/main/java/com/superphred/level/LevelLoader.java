@@ -36,6 +36,7 @@ public class LevelLoader {
                     case '#' -> Tile.STONE;
                     case '%' -> Tile.DIRT;
                     case 'c' -> Tile.CLOUD;
+                    case 'G' -> Tile.GRASS;
                     case 'p' -> Tile.PLAYER_SPAWN;
                     case 'g' -> Tile.GEAR_SPAWN;
                     case 'd' -> Tile.DOUGHNUT_SPAWN;
