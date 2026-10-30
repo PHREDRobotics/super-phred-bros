@@ -69,7 +69,9 @@ public class GameScreen implements Screen {
         player.setPosition(level.getPlayerSpawn());
         entities = level.getEntities();
 
+        game.batch.begin();
         level.render(game.batch);
+        game.batch.end();
     }
     
     @Override
