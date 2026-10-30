@@ -33,14 +33,7 @@ public class GameScreen implements Screen {
     
     public GameScreen(final SuperPhred game) {
         this.game = game;
-        if (LevelLoader.loadNextLevel(game.currentLevel).isPresent()) {
-            this.level = LevelLoader.loadNextLevel(game.currentLevel).get();
-        } else {
-            game.setScreen(new MenuScreen(game));
-            dispose();
-        }
-        player = new Player(level.getPlayerSpawn());
-        entities = level.getEntities();
+        player = new Player();
         collisionHandler = new CollisionHandler();
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 16 * Constants.TILE_SIZE, 9 * Constants.TILE_SIZE);
@@ -65,10 +58,22 @@ public class GameScreen implements Screen {
     }
 
     @Override 
-    public void show() {}
+    public void show() {
+        if (LevelLoader.loadNextLevel(game.currentLevel).isPresent()) {
+            this.level = LevelLoader.loadNextLevel(game.currentLevel).get();
+        } else {
+            game.setScreen(new MenuScreen(game));
+            dispose();
+        }
+        
+        player.setPosition(level.getPlayerSpawn());
+        entities = level.getEntities();
+    }
     
     @Override
     public void render(float delta) {
+        
+
         input();
         logic(delta);
         draw(delta);
