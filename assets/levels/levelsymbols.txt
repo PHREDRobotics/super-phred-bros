@@ -1,0 +1,7 @@
+. -> air
+| -> border
+# -> stone 
+% -> dirt 
+p -> player spawn 
+g -> gear spawn
+d -> doughnut spawn
