@@ -8,7 +8,6 @@ import com.superphred.entities.Player;
 import com.superphred.level.Level;
 
 public class CollisionHandler {
-
     public void update(ArrayList<Entity> entities, Level level, float delta) {
         for (Entity entity : entities) {
             Rectangle testBounds = new Rectangle(
@@ -50,8 +49,14 @@ public class CollisionHandler {
     }
 
     private boolean collidesTile(Rectangle bounds, Level level) {
-        for (int x = 0; x < level.getWidth(); x++) {
-            for (int y = 0; y < level.getHeight(); y++) {
+        int minX = (int) (bounds.x / Constants.TILE_SIZE) - 1;
+        int maxX = (int) ((bounds.x + bounds.width) / Constants.TILE_SIZE) + 1;
+
+        int minY = (int) (bounds.y / Constants.TILE_SIZE) - 1;
+        int maxY = (int) ((bounds.y + bounds.height) / Constants.TILE_SIZE) + 1;
+
+        for (int x = minX; x < maxX; x++) {
+            for (int y = minY; y < maxY; y++) {
                 if (!level.getTile(x, y).isSolid) {
                     continue;
                 }
@@ -75,7 +80,7 @@ public class CollisionHandler {
     public ArrayList<Entity> doEntityCollisions(Player player, ArrayList<Entity> entities, Level level) {
         Rectangle playerBounds = player.getBounds();
         ArrayList<Entity> collidedEntities = new ArrayList<Entity>(); 
-
+        
         for (Entity entity : entities) {
             if (entity.getBounds().overlaps(playerBounds)) {
                 collidedEntities.add(entity);

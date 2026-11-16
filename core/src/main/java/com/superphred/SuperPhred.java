@@ -18,12 +18,12 @@ public class SuperPhred extends Game {
         batch = new SpriteBatch();
         viewport = new FitViewport(16, 9);
         font = new BitmapFont();
-        
+
         font.setUseIntegerPositions(false);
         font.getData().setScale(viewport.getWorldHeight() / Gdx.graphics.getHeight());
         this.setScreen(new MenuScreen(this));
     }
-
+    
     @Override
     public void render() {
         super.render();

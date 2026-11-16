@@ -59,23 +59,18 @@ public class GameScreen implements Screen {
 
     @Override 
     public void show() {
-        if (LevelLoader.loadNextLevel(game.currentLevel).isPresent()) {
-            this.level = LevelLoader.loadNextLevel(game.currentLevel).get();
-        } else {
-            game.setScreen(new MenuScreen(game));
-            dispose();
-        }
+        this.level = LevelLoader.loadNextLevel(game.currentLevel).orElseThrow();
         
         player.setPosition(level.getPlayerSpawn());
         entities = level.getEntities();
-
-        game.batch.begin();
-        level.render(game.batch);
-        game.batch.end();
     }
     
     @Override
-    public void render(float delta) {
+    public void render(float delta) { 
+        delta = Math.min(delta, 0.02f);
+        
+        System.out.println(delta);
+
         input();
         logic(delta);
         draw(delta);
